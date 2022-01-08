@@ -1,1 +1,57 @@
-@value makerGreen from '../../common/colors.css';
+@value makerGreen, makerGray from '../../common/colors.css';
+
+body {
+  height: 10000px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  height: 100vh;
+  width: 15rem;
+  position: fixed;
+}
+
+.title {
+  font-family: "Bangers", cursive;
+  display: flex;
+  align-items: center;
+  margin: 30px;
+}
+
+.logo {
+  line-height: 0.8;
+}
+
+.strong {
+  font-size: 60px;
+  color: makerGreen;
+}
+
+.logoImage {
+  width: 70px;
+  height: 70px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  width: 100%;
+  padding: 30px;
+  background-color: blueviolet;
+}
+
+nav ul li:hover {
+  color: red;
+  background-color: violet;
+  text-decoration: none;
+}
+
+nav ul li a {
+  color: makerGray;
+  font-size: 1.5rem;
+}
