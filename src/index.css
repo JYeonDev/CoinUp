@@ -1,15 +1,5 @@
-* {
-  list-style: none;
-  box-sizing: border-box;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 body {
   margin: 0;
-  font-family: "Nanum Gothic", sans-serif;
 }
 
 code {
