@@ -29,16 +29,16 @@ const Header = (props) => {
             <Link to="realtime">실시간가격</Link>
           </li>
           <li>
-            <Link to="/">관심종목</Link>
+            <Link to="/wishlist">관심종목</Link>
           </li>
           <li>
             <Link to="news">코인관련뉴스</Link>
           </li>
           <li>
-            <Link to="/">주요거래소</Link>
+            <Link to="/major">주요거래소</Link>
           </li>
           <li>
-            <Link to="/">About</Link>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </nav>
