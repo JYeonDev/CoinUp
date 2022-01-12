@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./realtimePrice.module.css";
 
 const RealtimePrice = (props) => {
@@ -9,12 +8,17 @@ const RealtimePrice = (props) => {
     options
   )
     .then((response) => response.json())
-    .then((response) => response[0].market)
+    .then((response) => response.mae)
     .catch((err) => console.error(err));
 
-  console.log();
+  console.log(promise);
 
-  return <div className={styles.price}>실시간가격</div>;
+  return (
+    <div>
+      실시간가격
+      <button>클릭</button>
+    </div>
+  );
 };
 
 export default RealtimePrice;

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./app.module.css";
+import About from "./components/about/about";
 import Header from "./components/header/header";
 import News from "./components/news/news";
 import RealtimePrice from "./components/realtimePrice/realtimePrice";
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="realtime" element={<RealtimePrice />} />
         <Route path="news" element={<News />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
