@@ -17,7 +17,7 @@ const MarketName = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        setCoinList(response[0].data);
       })
       .catch(function (error) {
         console.error(error);
