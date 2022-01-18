@@ -1,10 +1,9 @@
 import axios from "axios";
 import { memo, useEffect, useState } from "react";
-
 import React from "react";
 import RealtimePrice from "../components/realtimePrice/realtimePrice";
 
-const MarketName = memo(() => {
+const MarketName = () => {
   const [coinList, setCoinList] = useState([]);
 
   const options = {
@@ -18,7 +17,7 @@ const MarketName = memo(() => {
     axios
       .request(options)
       .then(function (response) {
-        setCoinList(response.data);
+        console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.error(error);
@@ -30,5 +29,5 @@ const MarketName = memo(() => {
       <RealtimePrice coinList={coinList} />
     </>
   );
-});
+};
 export default MarketName;
