@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 import MarketList from "../../upbit/marketList";
 
 import styles from "./realtimePrice.module.css";
