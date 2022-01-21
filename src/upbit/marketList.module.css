@@ -1,0 +1,9 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 3px;
+}
+
+.marketList:hover {
+  transform: scaleX(1.05);
+}
