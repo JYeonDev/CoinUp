@@ -1,0 +1,21 @@
+.card {
+  height: 400px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
+.img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.title {
+  font: 24px;
+  font-weight: bold;
+}
