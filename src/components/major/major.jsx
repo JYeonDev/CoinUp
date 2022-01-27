@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import styles from "./major.module.css";

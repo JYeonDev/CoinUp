@@ -1,19 +1,18 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import NewsData from "../../upbit/newsdata";
+import React, { useEffect, useState } from "react";
 import NewsItem from "../newsItem/newsItem";
 import styles from "./news.module.css";
 
 const News = () => {
-  const [articles, setArticles] = useEffect(null);
-  const [loading, setLoading] = useEffect(false);
+  const [articles, setArticles] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines?country=kr&apiKey=6e634c77ed5e40bc8a0c26cd66b62904"
+          "https://newsapi.org/v2/everything?q=Bitcoin&from=2022-01-26&sortBy=popularity&apiKey=6e634c77ed5e40bc8a0c26cd66b62904"
         );
         setArticles(response.data.articles);
       } catch (e) {
