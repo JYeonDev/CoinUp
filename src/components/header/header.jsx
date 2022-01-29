@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React from "react";
 import { Link } from "react-router-dom";
-import News from "../news/news";
-import RealtimePrice from "../realtimePrice/realtimePrice";
 import styles from "./header.module.css";
 
 const Header = (props) => {
@@ -39,9 +37,6 @@ const Header = (props) => {
           </li>
           <li>
             <Link to="/major">주요거래소</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
           </li>
         </ul>
       </nav>

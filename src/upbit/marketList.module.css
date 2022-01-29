@@ -5,5 +5,9 @@
 }
 
 .marketList:hover {
-  transform: scaleX(1.05);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.3s;
+  background-color: rgb(243, 41, 41);
+  color: #fff;
 }
