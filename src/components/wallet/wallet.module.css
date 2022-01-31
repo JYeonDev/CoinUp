@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+}
+
+.property {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  line-height: 50px;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.price {
+  color: red;
+  font-size: 36px;
+}
+
+.divide {
+  display: flex;
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  color: #fff;
+  border-style: none;
+  cursor: pointer;
+}
+
+.deposit {
+  width: 50%;
+  background-color: red;
+}
+
+.withDraw {
+  width: 50%;
+  background-color: blue;
+}
