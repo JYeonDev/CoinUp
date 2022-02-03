@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./wallet.module.css";
 
 const Wallet = () => {
   const [price, setPrice] = useState(0);
+  const [money, setMoney] = useState(0);
   const [hide, setHide] = useState(false);
+  const [exchange, setExchange] = useState([]);
+  const inputRef = useRef();
+
   let date = new Date();
   let year = date.getFullYear();
   let month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -19,12 +23,20 @@ const Wallet = () => {
     setHide(!hide);
   }
 
+  function onClick() {
+    let exchangeCopy = [...exchange];
+    exchangeCopy.unshift(money);
+    setExchange(exchangeCopy);
+    setMoney(money + Number(inputRef.current.value));
+    setPrice(price + Number(inputRef.current.value));
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.property}>
         <span className={styles.total}>총 보유자산</span>
         <span>
-          <span className={styles.price}>{price}</span> KRW
+          <span className={styles.price}>{money}</span> KRW
         </span>
       </div>
       <div className={styles.divide}>
@@ -38,8 +50,12 @@ const Wallet = () => {
           <p>하루 이체한도 : 200,000,000 KRW</p>
           <p>보유자산 : {price} KRW</p>
           <div className={styles.input_container}>
-            <input placeholder="금액을 입력해주세요" />
-            <button>입금</button>
+            <input
+              type="text"
+              placeholder="금액을 입력해주세요"
+              ref={inputRef}
+            />
+            <button onClick={onClick}>입금</button>
           </div>
         </div>
       )}
@@ -49,14 +65,20 @@ const Wallet = () => {
           <p className={styles.title}>날짜</p>
           <p className={styles.title}>내용</p>
           <p className={styles.title}>금액</p>
+          <p className={styles.title}>입/출금</p>
         </div>
-        <div className={styles.exchange_text}>
-          <p className={styles.time}>
-            {dateString} {timeString}
-          </p>
-          <p className={styles.memo}></p>
-          <p className={styles.money}>{price}</p>
-        </div>
+        {exchange.map(() => {
+          return (
+            <div className={styles.exchange_text}>
+              <p className={styles.time}>
+                {dateString} {timeString}
+              </p>
+              <p className={styles.memo}></p>
+              <p className={styles.money}>{price} 원</p>
+              <p>입/출금</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
