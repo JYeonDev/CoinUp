@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import ExchangeList from "./exchangeList";
 import styles from "./wallet.module.css";
 
 const Wallet = () => {
@@ -27,8 +28,8 @@ const Wallet = () => {
     let exchangeCopy = [...exchange];
     exchangeCopy.unshift(money);
     setExchange(exchangeCopy);
-    setMoney(money + Number(inputRef.current.value));
-    setPrice(price + Number(inputRef.current.value));
+    setMoney(inputRef.current.value);
+    setPrice(Number(inputRef.current.value));
   }
 
   return (
@@ -67,18 +68,19 @@ const Wallet = () => {
           <p className={styles.title}>금액</p>
           <p className={styles.title}>입/출금</p>
         </div>
-        {exchange.map(() => {
+        {/* {exchange.map((list) => {
           return (
             <div className={styles.exchange_text}>
               <p className={styles.time}>
                 {dateString} {timeString}
               </p>
               <p className={styles.memo}></p>
-              <p className={styles.money}>{price} 원</p>
+              <p className={styles.money}>{list} 원</p>
               <p>입/출금</p>
             </div>
           );
-        })}
+        })} */}
+        {/* <ExchangeList /> */}
       </div>
     </div>
   );
