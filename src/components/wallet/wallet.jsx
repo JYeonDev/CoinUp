@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import ExchangeList from "./exchangeList";
+import ExchangeList from "./exchangeList/exchangeList";
+
 import styles from "./wallet.module.css";
 
 const Wallet = () => {
@@ -51,12 +52,15 @@ const Wallet = () => {
           <p>하루 이체한도 : 200,000,000 KRW</p>
           <p>보유자산 : {price} KRW</p>
           <div className={styles.input_container}>
-            <input
-              type="text"
-              placeholder="금액을 입력해주세요"
-              ref={inputRef}
-            />
-            <button onClick={onClick}>입금</button>
+            <form>
+              <input
+                type="text"
+                placeholder="금액을 입력해주세요"
+                autoFocus
+                ref={inputRef}
+              />
+              <button onClick={onClick}>입금</button>
+            </form>
           </div>
         </div>
       )}
@@ -80,7 +84,7 @@ const Wallet = () => {
             </div>
           );
         })} */}
-        {/* <ExchangeList /> */}
+        <ExchangeList />
       </div>
     </div>
   );

@@ -1,0 +1,12 @@
+.exchange_list {
+  flex: 1;
+  overflow-y: auto;
+  background-color: green;
+}
+
+.item_block {
+  display: flex;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+}

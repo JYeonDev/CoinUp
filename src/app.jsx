@@ -1,11 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styles from "./app.module.css";
 import Header from "./components/header/header";
 import Home from "./components/home/home";
 import Major from "./components/major/major";
 import News from "./components/news/news";
 import RealtimePrice from "./components/realtimePrice/realtimePrice";
-import ExchangeList from "./components/wallet/exchangeList";
 import Wallet from "./components/wallet/wallet";
 
 function App() {
@@ -18,7 +16,6 @@ function App() {
         <Route path="/wallet" element={<Wallet />} />
         <Route path="major" element={<Major />} />
         <Route path="news" element={<News />} />
-        <Route path="list" element={<ExchangeList />} />
       </Routes>
     </BrowserRouter>
   );
