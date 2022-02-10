@@ -61,11 +61,24 @@
 
 .title {
   display: flex;
+  width: 100%;
   margin: 0 3rem;
+  padding: 0;
 }
 
-.title_margin:nth-child(1) {
-  margin: 0 2rem;
+.title_margin1 {
+  display: inline-block;
+  width: 40%;
+}
+
+.title_margin2 {
+  display: inline-block;
+  width: 40%;
+}
+
+.title_margin3 {
+  display: inline-block;
+  margin: 20%;
 }
 
 .item_list {
@@ -74,6 +87,17 @@
   display: flex;
 }
 
-.item_list_margin {
-  margin: 0 2rem;
+.item_list_margin1 {
+  display: inline-block;
+  width: 40%;
+}
+
+.item_list_margin2 {
+  display: inline-block;
+  width: 40%;
+}
+
+.item_list_margin3 {
+  display: inline-block;
+  width: 20%;
 }

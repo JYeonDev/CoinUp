@@ -33,13 +33,13 @@ const Wallet = () => {
       const itemCopy = [...item];
       itemCopy.push(
         <li className={styles.item_list}>
-          <span className={styles.item_list_margin}>
+          <span className={styles.item_list_margin1}>
             {dateString} {timeString}
           </span>
-          <span className={styles.item_list_margin}>
+          <span className={styles.item_list_margin2}>
             {inputRef.current.value}
           </span>
-          <span className={styles.item_list_margin}>미정</span>
+          <span className={styles.item_list_margin3}>미정</span>
         </li>
       );
       setItem([itemCopy]);
@@ -87,9 +87,9 @@ const Wallet = () => {
       <div className={styles.list_title}>입출금내역</div>
 
       <div className={styles.title}>
-        <span className={styles.title_margin}>날짜</span>
-        <span className={styles.title_margin}>금액</span>
-        <span className={styles.title_margin}>입/출금</span>
+        <span className={styles.title_margin1}>날짜</span>
+        <span className={styles.title_margin2}>금액</span>
+        <span className={styles.title_margin3}>입/출금</span>
       </div>
       <ul>{item}</ul>
     </div>
