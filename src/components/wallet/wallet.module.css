@@ -2,6 +2,8 @@
 
 * {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -48,4 +50,30 @@
 .withDraw {
   width: 50%;
   background-color: blue;
+}
+
+.list_title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  margin: 2rem 0;
+}
+
+.title {
+  display: flex;
+  margin: 0 3rem;
+}
+
+.title_margin:nth-child(1) {
+  margin: 0 2rem;
+}
+
+.item_list {
+  border-bottom: 1px solid #000;
+  margin: 0 3rem;
+  display: flex;
+}
+
+.item_list_margin {
+  margin: 0 2rem;
 }

@@ -12,8 +12,19 @@ const Wallet = () => {
 
   const [item, setItem] = useState([]);
 
-  const date = new Date();
-  const time = date.getTime();
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = ("0" + (today.getMonth() + 1)).slice(-2);
+  const day = ("0" + today.getDate()).slice(-2);
+
+  const dateString = year + "-" + month + "-" + day;
+
+  const hours = ("0" + today.getHours()).slice(-2);
+  const minutes = ("0" + today.getMinutes()).slice(-2);
+  const seconds = ("0" + today.getSeconds()).slice(-2);
+
+  const timeString = hours + ":" + minutes + ":" + seconds;
 
   const inputRef = useRef();
   console.log(inputRef);
@@ -21,11 +32,14 @@ const Wallet = () => {
     if (inputRef.current.value) {
       const itemCopy = [...item];
       itemCopy.push(
-        <li>
-          <span>{time}</span>
-          <span>시간</span>
-          <span>금액</span>
-          {inputRef.current.value}
+        <li className={styles.item_list}>
+          <span className={styles.item_list_margin}>
+            {dateString} {timeString}
+          </span>
+          <span className={styles.item_list_margin}>
+            {inputRef.current.value}
+          </span>
+          <span className={styles.item_list_margin}>미정</span>
         </li>
       );
       setItem([itemCopy]);
@@ -45,32 +59,39 @@ const Wallet = () => {
         <div className={styles.deposit} onClick={clickHide}>
           입금
         </div>
-        <div className={styles.withDraw}>출금</div>
+        <div className={styles.withDraw} onClick={clickHide}>
+          출금
+        </div>
       </div>
       {hide ? null : (
         <div className={styles.deposit_page}>
           <p>하루 이체한도 : 200,000,000 KRW</p>
           <p>보유자산 : 0 KRW</p>
           <div className={styles.input_container}></div>
+          <input
+            className={styles.inputText}
+            type="text"
+            placeholder="금액을 입력하세요."
+            ref={inputRef}
+          />
+          <input
+            type="button"
+            value="입력"
+            onClick={() => {
+              addItem();
+            }}
+          />
         </div>
       )}
 
-      {/* todolist 쓸곳 */}
+      <div className={styles.list_title}>입출금내역</div>
 
-      <input
-        className={styles.inputText}
-        type="text"
-        placeholder="금액을 입력하세요."
-        ref={inputRef}
-      />
-      <input
-        type="button"
-        value="입력"
-        onClick={() => {
-          addItem();
-        }}
-      />
-      <ExchangeList item={item} />
+      <div className={styles.title}>
+        <span className={styles.title_margin}>날짜</span>
+        <span className={styles.title_margin}>금액</span>
+        <span className={styles.title_margin}>입/출금</span>
+      </div>
+      <ul>{item}</ul>
     </div>
   );
 };
