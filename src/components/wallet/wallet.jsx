@@ -4,10 +4,17 @@ import ExchangeList from "./exchangeList/exchangeList";
 import styles from "./wallet.module.css";
 
 const Wallet = () => {
-  const [hide, setHide] = useState(false);
+  const [hide, setHide] = useState(true);
+  const [hide_, setHide_] = useState(true);
 
   function clickHide() {
     setHide(!hide);
+    setHide_(true);
+  }
+
+  function clickHide_() {
+    setHide_(!hide_);
+    setHide(true);
   }
 
   const [item, setItem] = useState([]);
@@ -31,15 +38,18 @@ const Wallet = () => {
   function addItem() {
     if (inputRef.current.value) {
       const itemCopy = [...item];
+      const value = inputRef.current.value;
+      const valueComma = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       itemCopy.push(
         <li className={styles.item_list}>
           <span className={styles.item_list_margin1}>
             {dateString} {timeString}
           </span>
-          <span className={styles.item_list_margin2}>
-            {inputRef.current.value}
+          <span className={styles.item_list_margin2}>{valueComma} 원</span>
+          <span className={styles.item_list_margin3}>
+            {!hide ? "입금" : null}
+            {!hide_ ? "출금" : null}
           </span>
-          <span className={styles.item_list_margin3}>미정</span>
         </li>
       );
       setItem([itemCopy]);
@@ -59,7 +69,7 @@ const Wallet = () => {
         <div className={styles.deposit} onClick={clickHide}>
           입금
         </div>
-        <div className={styles.withDraw} onClick={clickHide}>
+        <div className={styles.withDraw} onClick={clickHide_}>
           출금
         </div>
       </div>
@@ -76,7 +86,28 @@ const Wallet = () => {
           />
           <input
             type="button"
-            value="입력"
+            value="입금"
+            onClick={() => {
+              addItem();
+            }}
+          />
+        </div>
+      )}
+
+      {hide_ ? null : (
+        <div className={styles.deposit_page}>
+          <p>하루 이체한도 : 200,000,000 KRW</p>
+          <p>보유자산 : 0 KRW</p>
+          <div className={styles.input_container}></div>
+          <input
+            className={styles.inputText}
+            type="text"
+            placeholder="금액을 입력하세요."
+            ref={inputRef}
+          />
+          <input
+            type="button"
+            value="출금"
             onClick={() => {
               addItem();
             }}

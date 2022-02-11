@@ -63,7 +63,7 @@
   display: flex;
   width: 100%;
   margin: 0 3rem;
-  padding: 0;
+  border-bottom: 1px solid black;
 }
 
 .title_margin1 {
@@ -73,12 +73,10 @@
 
 .title_margin2 {
   display: inline-block;
-  width: 40%;
 }
 
 .title_margin3 {
   display: inline-block;
-  margin: 20%;
 }
 
 .item_list {
