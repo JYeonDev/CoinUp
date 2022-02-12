@@ -2,15 +2,16 @@
   display: flex;
 }
 
-.thumnail {
+.thumbnail {
   margin-right: 1rem;
 }
 
-.thumnail img {
+img {
   display: block;
-  width: 160px;
-  height: 100px;
+  width: 24rem;
+  height: 14rem;
   object-fit: cover;
+  margin-right: 3rem;
 }
 
 .contents h2 {
@@ -21,7 +22,7 @@
   color: black;
 }
 
-.contents h2 p {
+.contents p {
   margin: 0;
   line-height: 1.5;
   margin-top: 0.5rem;

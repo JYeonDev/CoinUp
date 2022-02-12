@@ -6,6 +6,7 @@ import styles from "./wallet.module.css";
 const Wallet = () => {
   const [hide, setHide] = useState(true);
   const [hide_, setHide_] = useState(true);
+  const [price, setPrice] = useState(0);
 
   function clickHide() {
     setHide(!hide);
@@ -34,7 +35,6 @@ const Wallet = () => {
   const timeString = hours + ":" + minutes + ":" + seconds;
 
   const inputRef = useRef();
-  console.log(inputRef);
   function addItem() {
     if (inputRef.current.value) {
       const itemCopy = [...item];
@@ -45,15 +45,37 @@ const Wallet = () => {
           <span className={styles.item_list_margin1}>
             {dateString} {timeString}
           </span>
-          <span className={styles.item_list_margin2}>{valueComma} 원</span>
-          <span className={styles.item_list_margin3}>
+          <span
+            style={!hide ? { color: "red" } : !hide_ ? { color: "blue" } : null}
+            className={styles.item_list_margin2}
+          >
+            {valueComma} 원
+          </span>
+          <span
+            style={!hide ? { color: "red" } : !hide_ ? { color: "blue" } : null}
+            className={styles.item_list_margin3}
+          >
             {!hide ? "입금" : null}
             {!hide_ ? "출금" : null}
           </span>
         </li>
       );
+
       setItem([itemCopy]);
       inputRef.current.value = "";
+    }
+  }
+
+  function plus() {
+    if (0 <= price) {
+      setPrice(Number(price) + Number(inputRef.current.value));
+    }
+  }
+  function minus() {
+    if (0 < price) {
+      setPrice(Number(price) - Number(inputRef.current.value));
+    } else if (0 > price) {
+      alert("보유자산보다 출금액이 많습니다.");
     }
   }
 
@@ -62,7 +84,10 @@ const Wallet = () => {
       <div className={styles.property}>
         <span className={styles.total}>총 보유자산</span>
         <span>
-          <span className={styles.price}>0</span> KRW
+          <span className={styles.price}>
+            {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>{" "}
+          KRW
         </span>
       </div>
       <div className={styles.divide}>
@@ -76,7 +101,10 @@ const Wallet = () => {
       {hide ? null : (
         <div className={styles.deposit_page}>
           <p>하루 이체한도 : 200,000,000 KRW</p>
-          <p>보유자산 : 0 KRW</p>
+          <p>
+            보유자산 : {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+            KRW
+          </p>
           <div className={styles.input_container}></div>
           <input
             className={styles.inputText}
@@ -88,6 +116,7 @@ const Wallet = () => {
             type="button"
             value="입금"
             onClick={() => {
+              plus();
               addItem();
             }}
           />
@@ -97,7 +126,10 @@ const Wallet = () => {
       {hide_ ? null : (
         <div className={styles.deposit_page}>
           <p>하루 이체한도 : 200,000,000 KRW</p>
-          <p>보유자산 : 0 KRW</p>
+          <p>
+            보유자산 : {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+            KRW
+          </p>
           <div className={styles.input_container}></div>
           <input
             className={styles.inputText}
@@ -109,6 +141,7 @@ const Wallet = () => {
             type="button"
             value="출금"
             onClick={() => {
+              minus();
               addItem();
             }}
           />

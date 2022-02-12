@@ -12,7 +12,7 @@ const News = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://newsapi.org/v2/everything?q=Bitcoin&from=2022-01-26&sortBy=popularity&apiKey=6e634c77ed5e40bc8a0c26cd66b62904"
+          "https://newsapi.org/v2/top-headlines?q=bitcoin&apiKey=6e634c77ed5e40bc8a0c26cd66b62904"
         );
         setArticles(response.data.articles);
       } catch (e) {
