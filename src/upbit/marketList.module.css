@@ -11,3 +11,7 @@
   background-color: rgb(243, 41, 41);
   color: #fff;
 }
+
+.vertical_bar {
+  opacity: 0.3;
+}

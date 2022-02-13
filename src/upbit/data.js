@@ -1,33 +1,56 @@
 import axios from "axios";
-import { memo, useEffect, useState } from "react";
-import React from "react";
-import RealtimePrice from "../components/realtimePrice/realtimePrice";
 
-const MarketName = () => {
-  const [coinList, setCoinList] = useState([]);
+export async function getMarket(dispatch) {
+  dispatch({
+    // 마켓 가져오기 시작
+    type: "GET_MARKET",
+  });
+  try {
+    // 마켓 가져오기 중
+    const response = await axios.get("https://api.upbit.com/v1/market/all");
+    dispatch({
+      type: "GET_MARKET_SUCCESS",
+      data: response.data,
+    });
 
-  const options = {
-    method: "GET",
-    url: "https://api.upbit.com/v1/market/all",
-    params: { isDetails: "false" },
-    headers: { Accept: "application/json" },
-  };
-
-  useEffect(() => {
-    axios
-      .request(options)
-      .then(function (response) {
-        setCoinList(response[0].data);
-      })
-      .catch(function (error) {
-        console.error(error);
+    // 마켓 리스트를 추출하여 웹소켓 실행
+    const marketList = response.data
+      .filter((list) => list.market.includes("KRW-"))
+      .map((list) => list.market);
+    const ws = new WebSocket("wss://api.upbit.com/websocket/v1");
+    ws.onopen = () => {
+      // 웹소켓 연결
+      dispatch({
+        type: "GET_REALTIME_DATA",
       });
-  }, []);
-
-  return (
-    <>
-      <RealtimePrice coinList={coinList} />
-    </>
-  );
-};
-export default MarketName;
+      ws.send(
+        `[{"ticket":"test"},{"type":"ticker","codes": ${JSON.stringify(
+          marketList
+        )}}]`
+      );
+    };
+    ws.onmessage = async (e) => {
+      // 실시간 데이터 수신
+      const { data } = e;
+      const text = await new Response(data).text();
+      // console.log(JSON.parse(text));
+      dispatch({
+        type: "GET_REALTIME_DATA_SUCCESS",
+        data: JSON.parse(text),
+      });
+    };
+    ws.onerror = (e) => {
+      // 실시간 데이터 수신 에러
+      dispatch({
+        type: "GET_REALTIME_DATA_ERROR",
+        error: e,
+      });
+    };
+  } catch (e) {
+    // 마켓 가져오기 실패
+    dispatch({
+      type: "GET_MARKET_ERROR",
+      error: e,
+    });
+  }
+}
