@@ -4,14 +4,50 @@
   margin-bottom: 3px;
 }
 
+.marketList {
+  background-color: #f2f5c8;
+}
+
 .marketList:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition: all 0.3s;
-  background-color: rgb(243, 41, 41);
+  background-color: #c1deae;
   color: #fff;
 }
 
 .vertical_bar {
   opacity: 0.3;
+}
+
+.coinInfo {
+  background-color: #a1b57d;
+  border-radius: inherit;
+  margin-top: 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-weight: bold;
+  color: #b33030;
+}
+
+.plus {
+  width: 2rem;
+  height: 2rem;
+  background-color: yellow;
+  text-align: center;
+  line-height: 2rem;
+  border-radius: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.plus:hover {
+  transform: scale(1.1);
+  transition: all 0.5s;
 }

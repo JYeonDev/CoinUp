@@ -30,7 +30,7 @@ const Header = () => {
             <Link to="wallet">입출금</Link>
           </li>
           <li>
-            <Link to="/investment">투자내역</Link>
+            <Link to="/wishlist">관심종목</Link>
           </li>
           <li>
             <Link to="news">코인관련뉴스</Link>
