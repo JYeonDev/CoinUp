@@ -1,9 +1,12 @@
 import React, { memo, useEffect, useState } from "react";
 import { ListGroup } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import WishList from "../components/wishlist/wishList";
 import styles from "./marketList.module.css";
 
 const MarketList = memo(({ marketList }) => {
+  const test = useSelector((store) => store);
+  console.log("확인용", test.market);
   const [randomNumber, setRandomNumber] = useState([
     Math.floor(Math.random() * 10000),
   ]);
@@ -24,9 +27,9 @@ const MarketList = memo(({ marketList }) => {
   function wishListPlus() {
     setListPlus(true);
 
-    const wishListCopy = [...wishList];
-    wishListCopy.push(<li>ㄹ이ㅏㄴ멀이ㅏ너미ㅏㄹ언ㅁ</li>);
-    setWishList(wishListCopy);
+    // const wishListCopy = [...wishList];
+    // wishListCopy.push(<li>ㄹ이ㅏㄴ멀이ㅏ너미ㅏㄹ언ㅁ</li>);
+    // setWishList(wishListCopy);
   }
 
   return (
