@@ -10,7 +10,6 @@ import Wallet from "./components/wallet/wallet";
 import WishList from "./components/wishlist/wishList";
 import axios from "axios";
 
-const marketList = [];
 const options = {
   method: "GET",
   url: "https://api.upbit.com/v1/market/all",
@@ -18,18 +17,24 @@ const options = {
   headers: { Accept: "application/json" },
 };
 
+const data = axios
+  .request(options)
+  .then(function (response) {
+    marketList.push(response.data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+
+const marketList = [];
 function market(state = marketList, action) {
   if (action.type === "plus") {
-    const data = axios
-      .request(options)
-      .then(function (response) {
-        marketList.push();
-        console.log(response.data[0].market, "리스트");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const marketListCopy = [...state];
+    marketListCopy.push(action.payload);
+    console.log(action);
+    console.log(marketListCopy);
   }
+  return state;
 }
 
 console.log(marketList, "확인");

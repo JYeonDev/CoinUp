@@ -3,10 +3,14 @@ import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import WishList from "../components/wishlist/wishList";
 import styles from "./marketList.module.css";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
 const MarketList = memo(({ marketList }) => {
-  const test = useSelector((store) => store);
-  console.log("확인용", test.market);
+  const store = useSelector((store) => store.market);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [randomNumber, setRandomNumber] = useState([
     Math.floor(Math.random() * 10000),
   ]);
@@ -47,6 +51,8 @@ const MarketList = memo(({ marketList }) => {
             newRandom[index] = Math.floor(Math.random() * 10000);
             setRandomNumber(newRandom);
             console.log(market);
+            dispatch({ type: "plus", payload: { id: 1 } });
+            navigate("/wishlist");
           }
 
           return (
