@@ -28,14 +28,6 @@ const MarketList = memo(({ marketList }) => {
   const [listPlus, setListPlus] = useState(false);
   console.log(listPlus);
 
-  function wishListPlus() {
-    setListPlus(true);
-
-    // const wishListCopy = [...wishList];
-    // wishListCopy.push(<li>ㄹ이ㅏㄴ멀이ㅏ너미ㅏㄹ언ㅁ</li>);
-    // setWishList(wishListCopy);
-  }
-
   return (
     <div>
       {marketList
@@ -50,9 +42,25 @@ const MarketList = memo(({ marketList }) => {
             const newRandom = Array(Math.floor(Math.random() * 10000));
             newRandom[index] = Math.floor(Math.random() * 10000);
             setRandomNumber(newRandom);
-            console.log(market);
-            dispatch({ type: "plus", payload: { id: 1 } });
+
+            // console.log(market);
+          }
+
+          function wishListPlus() {
+            setListPlus(true);
+            dispatch({
+              type: "plus",
+              payload: {
+                market: market.market,
+                korean_name: market.korean_name,
+                english_name: market.english_name,
+              },
+            });
             navigate("/wishlist");
+
+            // const wishListCopy = [...wishList];
+            // wishListCopy.push(<li>ㄹ이ㅏㄴ멀이ㅏ너미ㅏㄹ언ㅁ</li>);
+            // setWishList(wishListCopy);
           }
 
           return (
