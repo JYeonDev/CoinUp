@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import WishList from "../components/wishlist/wishList";
 import styles from "./marketList.module.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
@@ -14,6 +13,7 @@ const MarketList = memo(({ marketList }) => {
   const [randomNumber, setRandomNumber] = useState([
     Math.floor(Math.random() * 10000),
   ]);
+  console.log(randomNumber, "random");
 
   useEffect(() => {
     const random = setInterval(() => {
@@ -23,8 +23,6 @@ const MarketList = memo(({ marketList }) => {
 
   const [info, setInfo] = useState(Array(marketList.length).fill(false));
 
-  const componentHide = false;
-  const [wishList, setWishList] = useState([]);
   const [listPlus, setListPlus] = useState(false);
   console.log(listPlus);
 
@@ -57,10 +55,6 @@ const MarketList = memo(({ marketList }) => {
               },
             });
             navigate("/wishlist");
-
-            // const wishListCopy = [...wishList];
-            // wishListCopy.push(<li>ㄹ이ㅏㄴ멀이ㅏ너미ㅏㄹ언ㅁ</li>);
-            // setWishList(wishListCopy);
           }
 
           return (
@@ -91,7 +85,6 @@ const MarketList = memo(({ marketList }) => {
             </div>
           );
         })}
-      {componentHide ? <WishList wishList={wishList} /> : null}
     </div>
   );
 });
