@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# COINUP Project - JYeonDev
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## COINUP 개발이유
 
-## Available Scripts
+```
+현재는 코인을 안하고 있지만 한참 코인을 할 당시에는 투자에 대한 개념이 없는 상태에서 오로지 감으로만 매매하다보니 그날 운에 따라 수익이 손실인지 익절인지가 정해지는 상황에 놓여있었습니다. 당시에는 300만원정도를 교육비라 생각하고 투자하며 연습했지만 지금 생각해보면 돈 아까운줄 모른 미친짓(?)이었습니다. 저 뿐만 아니라 제 주변 코인을 하시는 분들중에서도 저와 같은 케이스가 상당히 많은데 주식에는 모의투자가 있는데 왜 코인에는 모의투자가 없을까 라는 생각으로 처음 이 프로젝트를 개발하기에 임했고 모의투자를 통해 올바른 매매에 대한 감을 잡고 투자손실자들이 줄어들기를 바라는 마음으로 프로젝트를 시작하게 되었으나 결론부터 말씀드리자면 모의투자 프로젝트 개발은 실패했습니다.
+프로젝트 개발을 시작할때 필요한 스택을 알아보고 하기보다는 일단 부딪히고 생각해보자라는 생각으로 뛰어들었습니다.
+그러다 보니 중간중간 부족한 부분이 여러부분 발생했고 최대한 가능한 부분은 개발 커뮤니티 okky 혹은 구글링을 통해 해결하였지만 그 외에는 구글링으로 해결이 불가능한 부분이 많았습니다. 예를 들어 업비트 API를 통해 실시간 가격을 받아오는 데이터통신을 원했지만 nodejs에 대해 모르고 WebSocket에 대해서도 모르다보니 해결하지 못한 부분이 많았습니다. COINUP 프로젝트를 통해 부족한 부분이 많다는 걸 많이 알았고 제가 구현하고 싶은 기능들을 정상적으로 구현하기 위해서는 많인 기술들이 필요하단 것 또한 느꼈습니다. 이 프로젝트는 아직 미완성입니다. 앞으로 계속해서 공부하고 성장해나가면서 완성해나갈 저의 프로젝트입니다.
+```
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 기능 설명 & 추가 예정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. 실시간 가격
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 원화마켓의 실시간 가격을 불러옵니다.
+- 현재는 원화마켓의 실시간 마켓이 아닌 randomMath 메서드를 통한 시각적 효과만을 보여주고 있습니다.
+- 코인 클릭시 현재가의 대한 정보가 나오고 +를 클릭시 관심종목 페이지로 이동합니다.
 
-### `npm test`
+2. 입출금
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 입출금 페이지입니다.
+- 입금시 금액이 붉은색으로 표시되고 출금시 파란색으로 표시됩니다.
+- 보유자산이 0원 밑으로 출금시 -로 표시되는 에러가 있습니다. 빠른시일내에 해결예정입니다.
 
-### `npm run build`
+3. 관심종목
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 실시간 가격에서 + 클릭시 관심종목으로 코인이 추가됩니다.
+- 관심종목에서 다시 클릭시 삭제됩니다.
+- 관심종목에서도 현재가를 볼수있고 삭제할수있게 수정예정입니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. 코인관련뉴스
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- https://newsapi.org/ 에서 코인관련뉴스를 받아오고 있습니다.
 
-### `npm run eject`
+5. 주요거래소
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 국내 / 해외주요거래소 리스트입니다.
+- 클릭시 해당거래소 페이지로 이동합니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. 회원기능
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- firebase를 통해 회원 가입기능을 추가예정입니다.
+- 간단한 로그인 및 회원관리 기능을 추가예정입니다.
